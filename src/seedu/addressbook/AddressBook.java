@@ -133,6 +133,9 @@ public class AddressBook {
     private static final String COMMAND_EXIT_DESC = "Exits the program.";
     private static final String COMMAND_EXIT_EXAMPLE = COMMAND_EXIT_WORD;
 
+    private static final String COMMAND_TOTAL_WORD = "total";
+    private static final String COMMAND_TOTAL_DESC = "Number of contacts:";
+
     private static final String DIVIDER = "===================================================";
 
 
@@ -379,6 +382,8 @@ public class AddressBook {
             return executeDeletePerson(commandArgs);
         case COMMAND_CLEAR_WORD:
             return executeClearAddressBook();
+        case COMMAND_TOTAL_WORD:
+            return executeTotalContacts();
         case COMMAND_HELP_WORD:
             return getUsageInfoForAllCommands();
         case COMMAND_EXIT_WORD:
@@ -577,6 +582,17 @@ public class AddressBook {
         ArrayList<String[]> toBeDisplayed = getAllPersonsInAddressBook();
         showToUser(toBeDisplayed);
         return getMessageForPersonsDisplayedSummary(toBeDisplayed);
+    }
+
+    /**
+     * Display the total number of contacts in address book.
+     *
+     * @return feedback display message for the operation result
+     */
+    private static String executeTotalContacts() {
+        System.out.println(COMMAND_TOTAL_DESC + ALL_PERSONS.size());
+        //return String.format(COMMAND_TOTAL_DESC, ALL_PERSONS.size());
+        return "";
     }
 
     /**
